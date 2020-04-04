@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "echo forcenewline && ng serve",
     "build": "ng build",
     "build:ssr": "ng run dnc3ng9ngrx9:server:dev",
     "test": "ng test",
