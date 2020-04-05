@@ -2,7 +2,7 @@
 dotnet new angular template sample with angular upgraded to 9 and ngrx 9 added
 
 
-##This is intended to be a SIMPLE example of:
+## This is intended to be a SIMPLE example of:
 .NET Core 3.1
 dotnet new angular template
 Angular 9.1
@@ -10,11 +10,11 @@ NGRX 9
 
 It's here because there are just so many out of date examples it can be harder to start with a current (as of April 2020 anyway) codebase than it should be.
 
-##Description for dotnet new angular:
+## Description for dotnet new angular
 
 [dotnet new angular](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/angular?view=aspnetcore-3.1&tabs=netcore-cli)
 
-###This is the .NET Core SDK
+### This is the .NET Core SDK
 
 [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 SDK 3.1.201
@@ -30,14 +30,15 @@ v12.14.1
 
 
 You should pick a better name than dnc3ng9ngrx9 for your app, this just makes the versions used clear
-
+```
 dotnet new angular -o dnc3ng9ngrx9
 
 cd dnc3ng9ngrx9
 
 dotnet build
+```
 ( This ran npm install in the ClientApp folder )
-
+```
 cd ClientApp
 NOTE: no dist folder yet
 ng --version
@@ -48,6 +49,7 @@ Angular: 8.2.12
 ng build
 
 ng serve
+```
 Check app (don't expect Fetch Data to work)
 http://localhost:4200
 CTRL-C
