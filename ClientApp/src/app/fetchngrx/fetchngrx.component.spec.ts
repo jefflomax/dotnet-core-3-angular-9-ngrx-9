@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FetchngrxComponent } from './fetchngrx.component';
 
-describe('FetchngrxComponent', () => {
+xdescribe('FetchngrxComponent', () => {
   let component: FetchngrxComponent;
   let fixture: ComponentFixture<FetchngrxComponent>;
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { FetchNgrxEffects } from './fetch-ngrx.effects';
 
-describe('FetchNgrxEffects', () => {
+xdescribe('FetchNgrxEffects', () => {
   let actions$: Observable<any>;
   let effects: FetchNgrxEffects;
 
