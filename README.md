@@ -3,10 +3,10 @@ dotnet new angular template sample with angular upgraded to 9 and ngrx 9 added
 
 
 ## This is intended to be a SIMPLE example of:
-.NET Core 3.1
-dotnet new angular template
-Angular 9.1
-NGRX 9
+- .NET Core 3.1
+- dotnet new angular template
+- Angular 9.1
+- NGRX 9
 
 It's here because there are just so many out of date examples it can be harder to start with a current (as of April 2020 anyway) codebase than it should be.
 
@@ -21,12 +21,13 @@ SDK 3.1.201
 dotnet-sdk-3.1.201-win-x64.exe
 
 dotnet --version
-3.1.201
+> 3.1.201
 
 npm --version
-6.13.4
+> 6.13.4
+
 node --version
-v12.14.1
+> v12.14.1
 
 
 You should pick a better name than dnc3ng9ngrx9 for your app, this just makes the versions used clear
@@ -42,31 +43,35 @@ dotnet build
 cd ClientApp
 NOTE: no dist folder yet
 ng --version
-Angular CLI: 8.3.14
-Node: 12.14.1
-Angular: 8.2.12
+> Angular CLI: 8.3.14
+> Node: 12.14.1
+> Angular: 8.2.12
 
 ng build
 
 ng serve
 ```
 Check app (don't expect Fetch Data to work)
+
 http://localhost:4200
+
 CTRL-C
 
-Tweak VS Code setting to exclue the package-lock.json file (who want's to search that?)
+```
+Tweak VS Code setting to exclude the package-lock.json file (who want's to search that?)
 code .
 File, Preferences, Settings, Workspace (tab), Text Editor, Files, Exclude, Add Pattern
 package-lock.json
 OR
 you can just edit .vscode/settings.json
-'''json
+```
+```json
 {
     "files.exclude": {
         "package-lock.json": true
     }
 }
-'''
+```
 That's all it's doing
 
 
@@ -76,14 +81,14 @@ Check combined .NET & Angular app (including Fetch Data)
 https://localhost:5001
 
 ( Be sure Git for Windows is installed )
-'''
+```
 git init
 git add .
 git commit -m "Initial Commit"
 
 git branch angular-9-upgrade
 git checkout angular-9-upgrade
-'''
+```
 
 [Upgrade Angular](https://update.angular.io/)
 8 to 9, basic, no other dependencies
@@ -91,22 +96,23 @@ git checkout angular-9-upgrade
 cd ClientApp
 ng update @angular/core@8 @angular/cli@8
 
-'''
+```
 git add .
 git commit -m "Angular 8 update"
 
 ng update @angular/core @angular/cli
-'''
+```
 NOTE: Typescript is 3.8.3, although the upgrade guide said 3.7, this is fine
 
 ng --version
-Angular: 9.1.0
+> Angular: 9.1.0
 
 npm install
 
 ng update
 
 @nguniversal/aspnetcore-engine 8.1.1 -> 8.2.6 ng update @nguniversal/aspnetcore-engine
+( This seems to be something to ignore )
 
 ng build
 Using the Microsoft template, we expect it to die in vendor-es2015.js in Window_run
@@ -122,7 +128,9 @@ ng build
 
 ng serve
 Check app (don't expect Fetch Data to work)
+
 http://localhost:4200
+
 CTRL-C
 
 cd ..
@@ -131,13 +139,16 @@ cd ..
 dotnet run
 
 Test the app
+
 https://localhost:5001/
+
 If you bring up your trusty developer tools in Chromium Edge or Chrome (F12)
 you'll probably see something like:
-VM11:76 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src c.s-microsoft.com/mscc/ assets.msn.com assets.msn.cn 'self' www.bing.com/as/ www.bing.com/s/as/ platform.bing.com/geo/AutoSuggest/v1 'nonce-aelfqLv9NY99uwSJy5BbRWC+ntRsVmi3PPp6pE2VnJE='". Either the 'unsafe-inline' keyword, a hash ('sha256-gmXNRITvAqce7zkm9IpG5fzF/kE2eiZU3GluJiBLKbo='), or a nonce ('nonce-...') is required to enable inline execution
+
+> VM11:76 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src c.s-microsoft.com/mscc/ assets.msn.com assets.msn.cn 'self' www.bing.com/as/ www.bing.com/s/as/ platform.bing.com/geo/AutoSuggest/v1 'nonce-aelfqLv9NY99uwSJy5BbRWC+ntRsVmi3PPp6pE2VnJE='". Either the 'unsafe-inline' keyword, a hash ('sha256-gmXNRITvAqce7zkm9IpG5fzF/kE2eiZU3GluJiBLKbo='), or a nonce ('nonce-...') is required to enable inline execution
 
 or from dotnet run
-An unhandled exception has occurred while executing the request.
+> An unhandled exception has occurred while executing the request.
 System.TimeoutException: The Angular CLI process did not start listening for requests within the timeout period of 0 seconds. Check the log output for error information
 
 This is because dotnet is watching the output from Angular, and it's not seeing what it used to
@@ -153,11 +164,12 @@ cd ..
 dotnet run
 ```
 Test the app
+
 https://localhost:5001/
 
 NOW we should have the sample on Angular 9.1 and working from ng start or dotnet run
 For other sources on these adjustments, see the brilliant folks from cazton.com
-https://www.cazton.com/blogs/technical/migrating-to-angularv9
+[Cazton Migrating to Angular 9](https://www.cazton.com/blogs/technical/migrating-to-angularv9)
 And this aspnetcore issue
 https://github.com/dotnet/aspnetcore/issues/17277
 
