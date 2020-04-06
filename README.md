@@ -21,12 +21,12 @@ SDK 3.1.201
 dotnet-sdk-3.1.201-win-x64.exe
 
 dotnet --version
-3.1.201
+> 3.1.201
 
 npm --version
-6.13.4
+> 6.13.4
 node --version
-v12.14.1
+> v12.14.1
 
 
 You should pick a better name than dnc3ng9ngrx9 for your app, this just makes the versions used clear
@@ -42,9 +42,9 @@ dotnet build
 cd ClientApp
 NOTE: no dist folder yet
 ng --version
-Angular CLI: 8.3.14
-Node: 12.14.1
-Angular: 8.2.12
+> Angular CLI: 8.3.14
+> Node: 12.14.1
+> Angular: 8.2.12
 
 ng build
 
@@ -104,7 +104,7 @@ ng update @angular/core @angular/cli
 NOTE: Typescript is 3.8.3, although the upgrade guide said 3.7, this is fine
 
 ng --version
-Angular: 9.1.0
+> Angular: 9.1.0
 
 npm install
 
@@ -127,7 +127,9 @@ ng build
 
 ng serve
 Check app (don't expect Fetch Data to work)
+
 http://localhost:4200
+
 CTRL-C
 
 cd ..
@@ -161,11 +163,12 @@ cd ..
 dotnet run
 ```
 Test the app
+
 https://localhost:5001/
 
 NOW we should have the sample on Angular 9.1 and working from ng start or dotnet run
 For other sources on these adjustments, see the brilliant folks from cazton.com
-https://www.cazton.com/blogs/technical/migrating-to-angularv9
+[Cazton Migrating to Angular 9](https://www.cazton.com/blogs/technical/migrating-to-angularv9)
 And this aspnetcore issue
 https://github.com/dotnet/aspnetcore/issues/17277
 
