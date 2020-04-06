@@ -57,7 +57,7 @@ http://localhost:4200
 CTRL-C
 
 ```
-Tweak VS Code setting to exclue the package-lock.json file (who want's to search that?)
+Tweak VS Code setting to exclude the package-lock.json file (who want's to search that?)
 code .
 File, Preferences, Settings, Workspace (tab), Text Editor, Files, Exclude, Add Pattern
 package-lock.json
