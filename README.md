@@ -56,21 +56,21 @@ http://localhost:4200
 
 CTRL-C
 
-'''
+```
 Tweak VS Code setting to exclue the package-lock.json file (who want's to search that?)
 code .
 File, Preferences, Settings, Workspace (tab), Text Editor, Files, Exclude, Add Pattern
 package-lock.json
 OR
 you can just edit .vscode/settings.json
-'''
-'''json
+```
+```json
 {
     "files.exclude": {
         "package-lock.json": true
     }
 }
-'''
+```
 That's all it's doing
 
 
@@ -80,14 +80,14 @@ Check combined .NET & Angular app (including Fetch Data)
 https://localhost:5001
 
 ( Be sure Git for Windows is installed )
-'''
+```
 git init
 git add .
 git commit -m "Initial Commit"
 
 git branch angular-9-upgrade
 git checkout angular-9-upgrade
-'''
+```
 
 [Upgrade Angular](https://update.angular.io/)
 8 to 9, basic, no other dependencies
@@ -95,12 +95,12 @@ git checkout angular-9-upgrade
 cd ClientApp
 ng update @angular/core@8 @angular/cli@8
 
-'''
+```
 git add .
 git commit -m "Angular 8 update"
 
 ng update @angular/core @angular/cli
-'''
+```
 NOTE: Typescript is 3.8.3, although the upgrade guide said 3.7, this is fine
 
 ng --version
@@ -111,6 +111,7 @@ npm install
 ng update
 
 @nguniversal/aspnetcore-engine 8.1.1 -> 8.2.6 ng update @nguniversal/aspnetcore-engine
+( This seems to be something to ignore )
 
 ng build
 Using the Microsoft template, we expect it to die in vendor-es2015.js in Window_run
@@ -135,13 +136,16 @@ cd ..
 dotnet run
 
 Test the app
+
 https://localhost:5001/
+
 If you bring up your trusty developer tools in Chromium Edge or Chrome (F12)
 you'll probably see something like:
-VM11:76 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src c.s-microsoft.com/mscc/ assets.msn.com assets.msn.cn 'self' www.bing.com/as/ www.bing.com/s/as/ platform.bing.com/geo/AutoSuggest/v1 'nonce-aelfqLv9NY99uwSJy5BbRWC+ntRsVmi3PPp6pE2VnJE='". Either the 'unsafe-inline' keyword, a hash ('sha256-gmXNRITvAqce7zkm9IpG5fzF/kE2eiZU3GluJiBLKbo='), or a nonce ('nonce-...') is required to enable inline execution
+
+> VM11:76 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src c.s-microsoft.com/mscc/ assets.msn.com assets.msn.cn 'self' www.bing.com/as/ www.bing.com/s/as/ platform.bing.com/geo/AutoSuggest/v1 'nonce-aelfqLv9NY99uwSJy5BbRWC+ntRsVmi3PPp6pE2VnJE='". Either the 'unsafe-inline' keyword, a hash ('sha256-gmXNRITvAqce7zkm9IpG5fzF/kE2eiZU3GluJiBLKbo='), or a nonce ('nonce-...') is required to enable inline execution
 
 or from dotnet run
-An unhandled exception has occurred while executing the request.
+> An unhandled exception has occurred while executing the request.
 System.TimeoutException: The Angular CLI process did not start listening for requests within the timeout period of 0 seconds. Check the log output for error information
 
 This is because dotnet is watching the output from Angular, and it's not seeing what it used to
