@@ -3,10 +3,10 @@ dotnet new angular template sample with angular upgraded to 9 and ngrx 9 added
 
 
 ## This is intended to be a SIMPLE example of:
-.NET Core 3.1
-dotnet new angular template
-Angular 9.1
-NGRX 9
+- .NET Core 3.1
+- dotnet new angular template
+- Angular 9.1
+- NGRX 9
 
 It's here because there are just so many out of date examples it can be harder to start with a current (as of April 2020 anyway) codebase than it should be.
 
@@ -51,15 +51,19 @@ ng build
 ng serve
 ```
 Check app (don't expect Fetch Data to work)
+
 http://localhost:4200
+
 CTRL-C
 
+'''
 Tweak VS Code setting to exclue the package-lock.json file (who want's to search that?)
 code .
 File, Preferences, Settings, Workspace (tab), Text Editor, Files, Exclude, Add Pattern
 package-lock.json
 OR
 you can just edit .vscode/settings.json
+'''
 '''json
 {
     "files.exclude": {
