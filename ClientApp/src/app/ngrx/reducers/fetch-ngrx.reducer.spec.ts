@@ -27,8 +27,9 @@ describe('FetchNgrx Reducer', () => {
       // The new state is passed into the action
       const loadAction = fetchNgrxActions.loadForecastsNgrxSuccess({forecasts: forecasts});
 
-      // The reducer is a pure function
-      const newState = reducer(state, loadAction);
+      // The reducer is a pure function, the initial empty state
+      // is replaced by the state from the action
+      const newState = reducer(initialState, loadAction);
 
       expect(newState.forecasts[0]).toEqual(forecast);
     });
