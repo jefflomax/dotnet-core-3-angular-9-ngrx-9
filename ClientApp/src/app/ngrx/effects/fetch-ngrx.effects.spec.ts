@@ -9,14 +9,17 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 // NOTE: EffectsTestingModule went away in V4
 // https://ngrx.io/guide/migration/v4
 import { provideMockActions } from '@ngrx/effects/testing';
+
+// Not sophisticated enough to need this yet
 import { hot, cold } from 'jasmine-marbles';
 
 import { HttpClient } from '@angular/common/http';
 
 import { WeatherForecastService } from '@services/weather-forecast.service';
 import { WeatherForecast } from '@models/weather-forecast.model';
+import { getTestForecasts } from '@models/weather-forecast.model.spec';
 
-import { FetchNgrxEffects } from './fetch-ngrx.effects';
+import { FetchNgrxEffects } from '@appstore/effects/fetch-ngrx.effects';
 import * as forecastActions from '@appstore/actions/fetch-ngrx.actions';
 
 describe('FetchNgrxEffects', () => {
@@ -51,21 +54,16 @@ describe('FetchNgrxEffects', () => {
   });
 
   it('should return fake data', () => {
-    const forecast = <WeatherForecast> {
-      date: '1/1/2000',
-      temperatureC: 16.66,
-      temperatureF: 62,
-      summary: 'summary'
-    };
+    const testForecasts = getTestForecasts();
 
-    spyOn(httpClientMock, 'get').and.returnValue(of([forecast]));
+    spyOn(httpClientMock, 'get').and.returnValue(of( testForecasts ));
     // spyOn(forecastsMock, 'getForecasts').and.returnValue(of([forecast]));
 
     actions$ = new ReplaySubject<Action>(1);
 
     (actions$ as ReplaySubject<Action>).next(forecastActions.loadForecastsNgrx);
 
-    const returnedAction = forecastActions.loadForecastsNgrxSuccess({forecasts: [forecast]});
+    const returnedAction = forecastActions.loadForecastsNgrxSuccess({forecasts: testForecasts});
 
     // https://ngrx.io/guide/migration/v4
     // https://ngrx.io/guide/effects/testing
@@ -77,7 +75,7 @@ describe('FetchNgrxEffects', () => {
       expect(result).toEqual(returnedAction);
       // TODO: Figure out how to cast this or get result to see the props
       const r = result as any ;
-      expect(r.forecasts[0].temperatureC).toBe(forecast.temperatureC);
+      expect(r.forecasts[0].temperatureC).toBe( testForecasts[0].temperatureC);
 
       // The HttpClient was called
       expect(httpClientMock.get).toHaveBeenCalledTimes(1);

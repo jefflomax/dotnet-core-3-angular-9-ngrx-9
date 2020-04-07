@@ -1,6 +1,8 @@
 import { reducer, initialState, FetchNgrxState } from './fetch-ngrx.reducer';
 import * as fetchNgrxActions from '@appstore/actions/fetch-ngrx.actions';
 import { WeatherForecast } from '@models/weather-forecast.model';
+import { getTestForecasts } from '@models/weather-forecast.model.spec';
+
 
 describe('FetchNgrx Reducer', () => {
   describe('an unknown action', () => {
@@ -15,13 +17,7 @@ describe('FetchNgrx Reducer', () => {
 
   describe('loadForecastsNgrxSuccess', () => {
     it('should return loadForecastsNgrxSuccess', () => {
-      const forecast = <WeatherForecast> {
-        date: '1/1/2000',
-        temperatureC: 16.66,
-        temperatureF: 62,
-        summary: 'summary'
-      };
-      const forecasts = [forecast];
+      const forecasts = getTestForecasts();
       const state = <FetchNgrxState>{ forecasts: forecasts };
 
       // The new state is passed into the action
@@ -31,7 +27,7 @@ describe('FetchNgrx Reducer', () => {
       // is replaced by the state from the action
       const newState = reducer(initialState, loadAction);
 
-      expect(newState.forecasts[0]).toEqual(forecast);
+      expect(newState.forecasts[0]).toEqual(forecasts[0]);
     });
   });
 });
