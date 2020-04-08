@@ -6,7 +6,7 @@ export const loadForecastsNgrx = createAction(
   '[FetchNgrx] Load FetchNgrxs'
 );
 
-export const loadForecaseByCountNgrx = createAction(
+export const loadForecastsByCountNgrx = createAction(
   '[FetchNgrx] Load N FetchNgrxs',
   props<{ count: number }>()
 );

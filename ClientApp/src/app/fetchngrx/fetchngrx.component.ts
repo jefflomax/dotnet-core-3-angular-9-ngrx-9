@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import * as fromStore from '@appstore/reducers';
 
 import { selectForecasts } from '@appstore/selectors/fetch-ngrx.selector';
-import { loadForecastsNgrx, loadForecaseByCountNgrx } from '@appstore/actions/fetch-ngrx.actions';
+import { loadForecastsNgrx, loadForecastsByCountNgrx } from '@appstore/actions/fetch-ngrx.actions';
 
 import { WeatherForecast } from '@models/weather-forecast.model';
 
@@ -19,7 +20,10 @@ export class FetchngrxComponent implements OnInit {
   constructor(private store: Store<fromStore.AppState>) {
 
     this.data$ = this.store
-      .pipe( select( selectForecasts ) );
+      .pipe(
+        // tap(_ => console.log('FetchngrxComponent ctor')),
+        select( selectForecasts )
+      );
   }
 
   ngOnInit(): void {
@@ -33,7 +37,7 @@ export class FetchngrxComponent implements OnInit {
     // This action also goes to fetch-ngrx.effects.ts, but
     // to a diffent effect which will re-use the same reducer
     // from above
-    this.store.dispatch( loadForecaseByCountNgrx({ count: count }));
+    this.store.dispatch( loadForecastsByCountNgrx({ count: count }));
   }
 
 }

@@ -13,12 +13,12 @@
       <th>Summary</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="beforeList">
     <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
+      <td name="date">{{ forecast.date }}</td>
+      <td name="tempC">{{ forecast.temperatureC }}</td>
+      <td name="tempF">{{ forecast.temperatureF }}</td>
+      <td name="summary">{{ forecast.summary }}</td>
     </tr>
   </tbody>
 </table>

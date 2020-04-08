@@ -10,7 +10,7 @@ import { WeatherForecastService } from '@services/weather-forecast.service';
 export class FetchNgrxEffects {
   constructor(private actions$: Actions,
     private forcasts: WeatherForecastService ) {
-      console.log('FetchNgrxEffects ctor');
+      // console.log('FetchNgrxEffects ctor');
     }
 
     loadForecasts$ = createEffect( () =>
@@ -37,7 +37,7 @@ export class FetchNgrxEffects {
     // But at least it makes it clear how to declare multiple effects in a file
     loadCountOfForecasts$ = createEffect( () =>
     this.actions$.pipe(
-      ofType( forecastActions.loadForecaseByCountNgrx ),
+      ofType( forecastActions.loadForecastsByCountNgrx ),
 
       tap( parm => console.log(`load Fetch by Ngrx ${parm.count}`)),
 
